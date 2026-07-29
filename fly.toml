@@ -1,0 +1,27 @@
+app = "telegram-bot-rs"
+primary_region = "ord"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  RUST_LOG = "info"
+  DATABASE_URL = "sqlite:telegram_bot.db"
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 8080
+
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 1000
+    soft_limit = 500
+
+[checks]
+  [checks.alive]
+    type = "http"
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "5s"
+    method = "get"
+    path = "/"

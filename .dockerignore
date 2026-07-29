@@ -1,0 +1,14 @@
+.git
+.gitignore
+README.md
+LICENSE
+.vscode
+.idea
+*.log
+target/
+*.db
+*.db-shm
+*.db-wal
+.env
+.env.local
+.env.*.local
